@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	desc "github.com/olezhek28/microservices_course/week_1/grpc/pkg/note_v1"
+	desc "github.com/llamaunicorn/grpc-basics-01/pkg/note_v1"
 )
 
 const (
@@ -18,11 +18,16 @@ const (
 )
 
 func main() {
-	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.NewClient(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("failed to connect to server: %v", err)
 	}
-	defer conn.Close()
+	defer func(conn *grpc.ClientConn) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
 
 	c := desc.NewNoteV1Client(conn)
 
