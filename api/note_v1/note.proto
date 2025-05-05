@@ -21,6 +21,8 @@ message NoteInfo {
   string content = 2;
   string author = 3;
   bool is_public = 4;
+  string link = 5;
+
 }
 
 message Note {
@@ -35,6 +37,7 @@ message UpdateNoteInfo {
   google.protobuf.StringValue context = 2;
   google.protobuf.StringValue author = 3;
   google.protobuf.BoolValue is_public = 4;
+  google.protobuf.StringValue link = 5;
 }
 
 message CreateRequest {

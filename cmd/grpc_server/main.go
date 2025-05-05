@@ -32,6 +32,7 @@ func (s *server) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetRespon
 				Content:  gofakeit.IPv4Address(),
 				Author:   gofakeit.Name(),
 				IsPublic: gofakeit.Bool(),
+				Link:     gofakeit.DomainName(),
 			},
 			CreatedAt: timestamppb.New(gofakeit.Date()),
 			UpdatedAt: timestamppb.New(gofakeit.Date()),
